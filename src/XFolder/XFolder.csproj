@@ -1,0 +1,78 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>XFolder</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <PlatformTarget>Arm64</PlatformTarget>
+    <Nullable>enable</Nullable>
+    <XFolderBundleDir Condition="'$(XFolderBundleDir)' == '' and Exists('$(MSBuildThisFileDirectory)../../local/XFolder.app/Contents/MonoBundle/Avalonia.Base.dll')">$(MSBuildThisFileDirectory)../../local/XFolder.app/Contents/MonoBundle</XFolderBundleDir>
+    <XFolderBundleDir Condition="'$(XFolderBundleDir)' == ''">/Applications/XFolder.app/Contents/MonoBundle</XFolderBundleDir>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>14.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="-AvaloniaResources" />
+    <EmbeddedResource Include="-AvaloniaResources" LogicalName="!AvaloniaResources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="CommunityToolkit.Mvvm">
+      <HintPath>$(XFolderBundleDir)/CommunityToolkit.Mvvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalonia.Controls">
+      <HintPath>$(XFolderBundleDir)/Avalonia.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions">
+      <HintPath>$(XFolderBundleDir)/Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalonia.Base">
+      <HintPath>$(XFolderBundleDir)/Avalonia.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>$(XFolderBundleDir)/Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalonia.Controls.DataGrid">
+      <HintPath>$(XFolderBundleDir)/Avalonia.Controls.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Hashing">
+      <HintPath>$(XFolderBundleDir)/System.IO.Hashing.dll</HintPath>
+    </Reference>
+    <Reference Include="Jeffijoe.MessageFormat">
+      <HintPath>$(XFolderBundleDir)/Jeffijoe.MessageFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress">
+      <HintPath>$(XFolderBundleDir)/SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalonia.Markup.Xaml">
+      <HintPath>$(XFolderBundleDir)/Avalonia.Markup.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging">
+      <HintPath>$(XFolderBundleDir)/Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection">
+      <HintPath>$(XFolderBundleDir)/Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalonia.Desktop">
+      <HintPath>$(XFolderBundleDir)/Avalonia.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalonia.Fonts.Inter">
+      <HintPath>$(XFolderBundleDir)/Avalonia.Fonts.Inter.dll</HintPath>
+    </Reference>
+    <Reference Include="DialogHost.Avalonia">
+      <HintPath>$(XFolderBundleDir)/DialogHost.Avalonia.dll</HintPath>
+    </Reference>
+    <Reference Include="Avalonia.Themes.Fluent">
+      <HintPath>$(XFolderBundleDir)/Avalonia.Themes.Fluent.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="3.119.0" />
+  </ItemGroup>
+</Project>
